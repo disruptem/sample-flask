@@ -27,6 +27,42 @@ desired_caps = {
 }
 
 
+def browserStackCaller():
+    driver = webdriver.Remote("https://" + userName + ":" + accessKey + "@hub-cloud.browserstack.com/wd/hub", desired_caps)
+    # driver = webdriver.Remote("http://localhost:4723", desired_caps)
+
+    # driver.switchTo().alert().accept();
+
+
+    # search_element = WebDriverWait(driver, 30).until(
+    #     EC.element_to_be_clickable((MobileBy.ACCESSIBILITY_ID, "Allow While Using App"))
+    # )
+
+    driver.find_element_by_id("Don’t Allow").click()
+    time.sleep(3)
+    driver.find_element_by_id("Cancel").click()
+    time.sleep(3)
+    driver.find_element_by_id("Delivery").click()
+
+    # search_element = WebDriverWait(driver, 30).until(
+    #     EC.element_to_be_clickable((MobileBy.ACCESSIBILITY_ID, "Delivery"))
+    # )
+    # search_input.send_keys("kuwait")
+    # search_element.click()
+
+
+    # search_input = WebDriverWait(driver, 30).until(
+    #     EC.element_to_be_clickable((MobileBy.ID, "org.wikipedia.alpha:id/search_src_text"))
+    # )
+    # search_input.send_keys("BrowserStack")
+    time.sleep(5)
+
+
+    search_results = driver.find_elements_by_class_name("android.widget.TextView")
+    assert(len(search_results) > 0)
+
+    driver.quit()
+
 @app.route("/")
 def hello_world():
     print("testt")
