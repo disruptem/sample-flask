@@ -67,3 +67,8 @@ def browserStackCaller():
 def hello_world():
     print("testt")
     return render_template("index.html")
+
+@app.route("/trigger")
+def trigger():
+    browserStackCaller()
+
