@@ -9,15 +9,15 @@ import time
 app = Flask(__name__)
 
 
-userName = "khalednakawa_jskeyQ"
-accessKey = "gq16w425AZqW3SA5nPM2"
+userName = "khalednakawa_9RsPlD"
+accessKey = "9qktLEF5WzzPx3xwp5VN"
 
 desired_caps = {
     "build": "browser_sample2",
     "name" : "test 15",
     "device": "iPhone 12 Pro",
     "os_version" : "14",
-    "app": "bs://ac09441d0ad0f46bc4daa57af4553806ea6b8526",
+    "app": "bs://2ac0f7ef2d9f793923bdc53ed56d4db4ac404e95",
     # "browserstack.appium_version" : "1.21.0",
     # "browserstack.acceptInsecureCerts" : "true",
     # 'autoDissmissAlerts': 'true',
@@ -28,6 +28,7 @@ desired_caps = {
 
 
 def browserStackCaller():
+    print("Browserstackcaller called")
     driver = webdriver.Remote("https://" + userName + ":" + accessKey + "@hub-cloud.browserstack.com/wd/hub", desired_caps)
     # driver = webdriver.Remote("http://localhost:4723", desired_caps)
 
@@ -70,5 +71,6 @@ def hello_world():
 
 @app.route("/trigger")
 def trigger():
-    browserStackCaller()
+    return browserStackCaller()
+
 
